@@ -25,12 +25,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - uses: cybozu/octoken-action@v1
+        id: create-iat
+        with:
+          github_app_id: 178109
+          github_app_private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+#       - name: Use Installation Access Token
+#         env:
+#           IAT: ${{ steps.create-iat.outputs.token }}
+#         run: |
+#           curl --include --fail -H "Authorization: token ${IAT}" https://api.github.com/installation/repositories
+
+      - name: Trigger target workflow
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{steps.create-iat.outputs.token}}
+          event-type: CI_target
