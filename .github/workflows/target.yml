@@ -2,8 +2,9 @@
 
 name: CI_target
 
-repository_dispatch:
-     types: target_dispatch
+on:
+     repository_dispatch:
+          types: target_dispatch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
