@@ -31,11 +31,11 @@ jobs:
           github_app_id: 178109
           github_app_private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
-#       - name: Use Installation Access Token
-#         env:
-#           IAT: ${{ steps.create-iat.outputs.token }}
-#         run: |
-#           curl --include --fail -H "Authorization: token ${IAT}" https://api.github.com/installation/repositories
+      - name: Use Installation Access Token
+        env:
+          IAT: ${{ steps.create-iat.outputs.token }}
+        run: |
+          curl --include --fail -H "Authorization: token ${IAT}" https://api.github.com/installation/repositories
 
       - name: Trigger target workflow
         uses: peter-evans/repository-dispatch@v1
