@@ -1,7 +1,0 @@
-# Add 'repo' label to any root file changes
-repo:
-- '*'
-
-# Add 'Workflow' to any file changes within 'example2' folder
-workflow:
-- any: ['.github/workflows/*']
