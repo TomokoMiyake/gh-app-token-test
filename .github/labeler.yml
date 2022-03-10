@@ -1,11 +1,6 @@
-name: "Pull Request Labeler"
-on:
-- pull_request_target
+# Add 'RootSetting' to any changes within 'example' folder or any subfolders
+RootTop:
+- README.md
 
-jobs:
-  triage:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+# Add 'Workflow' to any file changes within 'example2' folder
+Workflow: .github/workflows/*
