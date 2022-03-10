@@ -1,6 +1,7 @@
-# Add 'RootSetting' to any changes within 'example' folder or any subfolders
-RootTop:
-- README.md
+# Add 'repo' label to any root file changes
+repo:
+- '*'
 
 # Add 'Workflow' to any file changes within 'example2' folder
-Workflow: .github/workflows/*
+workflow:
+- any: ['.github/workflows/*']
